@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "technos",
+  "info": {
+    "singularName": "techno",
+    "pluralName": "technos",
+    "displayName": "Techno",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "main": {
+      "type": "boolean"
+    }
+  }
+}

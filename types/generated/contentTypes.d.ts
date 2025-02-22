@@ -462,12 +462,43 @@ export interface ApiExperienceExperience extends Struct.CollectionTypeSchema {
       'api::experience.experience'
     > &
       Schema.Attribute.Private;
-    Logo: Schema.Attribute.Media<'images' | 'files'> &
+    logo: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
-    Period: Schema.Attribute.String & Schema.Attribute.Required;
+    logoTitle: Schema.Attribute.String;
+    period: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    Stack: Schema.Attribute.String & Schema.Attribute.Required;
-    Title: Schema.Attribute.String;
+    stack: Schema.Attribute.Relation<'oneToMany', 'api::techno.techno'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTechnoTechno extends Struct.CollectionTypeSchema {
+  collectionName: 'technos';
+  info: {
+    description: '';
+    displayName: 'Techno';
+    pluralName: 'technos';
+    singularName: 'techno';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::techno.techno'
+    > &
+      Schema.Attribute.Private;
+    main: Schema.Attribute.Boolean;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -986,6 +1017,7 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::category.category': ApiCategoryCategory;
       'api::experience.experience': ApiExperienceExperience;
+      'api::techno.techno': ApiTechnoTechno;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

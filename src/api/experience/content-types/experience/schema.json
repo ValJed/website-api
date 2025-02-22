@@ -12,11 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string",
-      "required": false
+      "required": true
     },
-    "Logo": {
+    "logo": {
       "type": "media",
       "multiple": false,
       "required": true,
@@ -29,13 +29,17 @@
       "type": "blocks",
       "required": true
     },
-    "Period": {
+    "period": {
       "type": "string",
       "required": true
     },
-    "Stack": {
-      "type": "string",
-      "required": true
+    "logoTitle": {
+      "type": "string"
+    },
+    "stack": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::techno.techno"
     }
   }
 }

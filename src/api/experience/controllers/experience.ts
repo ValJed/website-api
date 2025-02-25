@@ -12,7 +12,7 @@ export default factories.createCoreController('api::experience.experience', ({st
     }
     const entry = await strapi.db.query('api::experience.experience').findOne({
       where: {
-        title: slug,
+        slug,
       },
       populate: {
         logo: true,

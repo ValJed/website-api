@@ -12,9 +12,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "slug": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "logo": {
       "type": "media",
